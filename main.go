@@ -25,17 +25,12 @@ func mustEnv(key string) (value string) {
 }
 
 func main() {
-	for _, pair := range os.Environ() {
-		fmt.Println(pair)
-	}
 	url := mustEnv("PLUGIN_URL")
 	params := Params{
 		ServiceName: mustEnv("PLUGIN_SERVICE_NAME"),
 		NewTag:      mustEnv("PLUGIN_NEW_TAG"),
 		Token:       mustEnv("PLUGIN_TOKEN"),
 	}
-	fmt.Println(url, params)
-
 	b, _ := json.Marshal(params)
 	resp, err := http.Post(url, "application/json", bytes.NewBuffer(b))
 	if err != nil {
@@ -50,6 +45,8 @@ func main() {
 	body := string(bodyBytes)
 
 	if resp.StatusCode != http.StatusOK {
+		fmt.Println("code not 200: ", resp.StatusCode)
 		log.Fatal(body)
 	}
+	fmt.Println(body)
 }
