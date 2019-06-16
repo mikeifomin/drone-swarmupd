@@ -28,11 +28,11 @@ func main() {
 	for _, pair := range os.Environ() {
 		fmt.Println(pair)
 	}
-	url := mustEnv("DRONE_URL")
+	url := mustEnv("PLUGIN_URL")
 	params := Params{
-		ServiceName: mustEnv("DRONE_SERVICE_NAME"),
-		NewTag:      mustEnv("DRONE_NEW_TAG"),
-		Token:       mustEnv("DRONE_TOKEN"),
+		ServiceName: mustEnv("PLUGIN_SERVICE_NAME"),
+		NewTag:      mustEnv("PLUGIN_NEW_TAG"),
+		Token:       mustEnv("PLUGIN_TOKEN"),
 	}
 	b, _ := json.Marshal(params)
 	resp, err := http.Post(url, "application/json", bytes.NewBuffer(b))
