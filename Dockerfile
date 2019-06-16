@@ -9,4 +9,4 @@ ENV DOCKER_HOST /var/run/docker.sock
 RUN apt-get update && apt-get install -y ca-certificates
 COPY --from=compiler /bin/server /bin/server
 EXPOSE 80 443
-ENTRYPOINT ["bin/server"]
+ENTRYPOINT ["/bin/server"]
