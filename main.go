@@ -24,6 +24,9 @@ func mustEnv(key string) (value string) {
 }
 
 func main() {
+	for _, pair := range os.Environ() {
+		fmt.Println(pair)
+	}
 	url := mustEnv("DRONE_URL")
 	params := Params{
 		ServiceName: mustEnv("DRONE_SERVICE_NAME"),
