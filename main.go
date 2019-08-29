@@ -46,6 +46,7 @@ func main() {
 
 	if resp.StatusCode != http.StatusOK {
 		fmt.Println("code not 200: ", resp.StatusCode)
+		fmt.Println("url: ", url)
 		log.Fatal(body)
 	}
 	fmt.Println(body)
