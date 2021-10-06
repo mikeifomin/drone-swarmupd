@@ -31,6 +31,7 @@ func main() {
 		NewTag:      mustEnv("PLUGIN_NEW_TAG"),
 		Token:       mustEnv("PLUGIN_TOKEN"),
 	}
+	fmt.Println("\n trying to tag", params.NewTag)
 	b, _ := json.Marshal(params)
 	resp, err := http.Post(url, "application/json", bytes.NewBuffer(b))
 	if err != nil {
